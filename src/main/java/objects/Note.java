@@ -3,36 +3,49 @@ package objects;
 
 import enumeration.Importance;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
+@Entity
+@Table(name = "notes")
 public class Note {
-    private int idNote, idAuthor;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_note")
+    private long idNote;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_author")
+    private long idAuthor;
+    @Column(name = "topic_name")
     private String topic;
+    @Column(name = "text")
     private String text;
+    @Column(name = "datetime_reminder")
     private Date date;
     private Time time;
     private Importance importance;
 
-    public Note(){
+
+    public Note() {
         super();
     }
 
-    public int getIdNote() {
+    public long getIdNote() {
         return idNote;
     }
 
-
-    public void setIdNote(int idNote) {
-
+    public void setIdNote(long idNote) {
         this.idNote = idNote;
     }
 
-    public int getIdAuthor() {
+    public long getIdAuthor() {
         return idAuthor;
     }
 
-    public void setIdAuthor(int idAuthor) {
+    public void setIdAuthor(long idAuthor) {
         this.idAuthor = idAuthor;
     }
 
@@ -71,5 +84,6 @@ public class Note {
     public Importance getImportance() {
         return importance;
     }
+
 
 }

@@ -1,28 +1,35 @@
 package objects;
 
 
-import java.beans.Statement;
-import java.sql.Connection;
+import javax.persistence.*;
 
 
+@Entity
+@Table(name = "users")
 public class User {
-    private int idUser;
-    private String name, email, password;
-    Connection con;
-    Statement statement = null;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private long idUser;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
 
     public User() {
         super();
     }
 
-    public int getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
-
     public String getName() {
         return name;
     }
@@ -46,5 +53,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 
 }

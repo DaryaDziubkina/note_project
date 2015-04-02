@@ -3,12 +3,25 @@ package objects;
 
 import enumeration.Perform;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Notification {
-    private int idNotification, idNotes;
+@Entity
+@Table(name = "notifications")
+public class Notification  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_notification")
+    private long idNotification;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_notes")
+    private long idNotes;
+    @Column(name = "perform")
     private Perform perform;
+    @Column(name = "date_notification")
     private Date date;
     private Time time;
 
@@ -16,19 +29,19 @@ public class Notification {
         super();
     }
 
-    public int getIdNotification() {
+    public long getIdNotification() {
         return idNotification;
     }
 
-    public void setIdNotification(int idNotification) {
+    public void setIdNotification(long idNotification) {
         this.idNotification = idNotification;
     }
 
-    public int getIdNotes() {
+    public long getIdNotes() {
         return idNotes;
     }
 
-    public void setIdNotes(int idNotes) {
+    public void setIdNotes(long idNotes) {
         this.idNotes = idNotes;
     }
 
@@ -55,4 +68,5 @@ public class Notification {
     public void setTime(Time time) {
         this.time = time;
     }
+
 }

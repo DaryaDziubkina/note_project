@@ -1,11 +1,9 @@
 package objects;
 
 
-import enumeration.Importance;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "notes")
@@ -15,18 +13,23 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_note")
     private long idNote;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_author")
-    private long idAuthor;
-    @Column(name = "topic_name")
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_author", nullable = false)
+    private User author;
+
+    @Column(name = "topic_name", nullable = false)
     private String topic;
+
     @Column(name = "text")
     private String text;
-    @Column(name = "datetime_reminder")
-    private Date date;
-    private Time time;
-    private Importance importance;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "datetime_reminder", unique = true, nullable = false, length = 10)
+    public Date DateTime;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "note")
+    private Set<Notification> notifications;
 
 
     public Note() {
@@ -41,12 +44,12 @@ public class Note {
         this.idNote = idNote;
     }
 
-    public long getIdAuthor() {
-        return idAuthor;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setIdAuthor(long idAuthor) {
-        this.idAuthor = idAuthor;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public String getTopic() {
@@ -65,25 +68,19 @@ public class Note {
         this.text = text;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateTime() {
+        return DateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateTime(Date dateTime) {
+        DateTime = dateTime;
     }
 
-    public Time getTime() {
-        return time;
+    public Set<Notification> getNotifications() {
+        return notifications;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setNotifications(Set<Notification> notifications) {
+        this.notifications = notifications;
     }
-
-    public Importance getImportance() {
-        return importance;
-    }
-
-
 }

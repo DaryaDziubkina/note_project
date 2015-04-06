@@ -27,7 +27,6 @@ public class Notification  {
         super();
     }
 
-
     public long getIdNotification() {
         return idNotification;
     }

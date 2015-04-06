@@ -1,33 +1,32 @@
 package objects;
 
-
-import enumeration.Perform;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+
+
 
 @Entity
 @Table(name = "notifications")
+
 public class Notification  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_notification")
     private long idNotification;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_notes")
-    private long idNotes;
-    @Column(name = "perform")
-    private Perform perform;
-    @Column(name = "date_notification")
-    private Date date;
-    private Time time;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_notification", unique = true, nullable = false, length = 10)
+    public Date DateTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_notes", nullable = false)
+    private Note note;
 
     public Notification() {
         super();
     }
+
 
     public long getIdNotification() {
         return idNotification;
@@ -37,36 +36,19 @@ public class Notification  {
         this.idNotification = idNotification;
     }
 
-    public long getIdNotes() {
-        return idNotes;
+    public Date getDateTime() {
+        return DateTime;
     }
 
-    public void setIdNotes(long idNotes) {
-        this.idNotes = idNotes;
+    public void setDateTime(Date dateTime) {
+        DateTime = dateTime;
     }
 
-    public Perform getPerform() {
-        return perform;
+    public Note getNote() {
+        return note;
     }
 
-    public void setPerform(Perform perform) {
-        this.perform = perform;
+    public void setNote(Note note) {
+        this.note = note;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
 }

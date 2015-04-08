@@ -1,18 +1,15 @@
-package objects;
+package by.gsu.dashadubkina.objects;
 
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "notes")
-public class Note {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public class Note extends Entity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_note")
-    private long idNote;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_author", nullable = false)
@@ -34,14 +31,6 @@ public class Note {
 
     public Note() {
         super();
-    }
-
-    public long getIdNote() {
-        return idNote;
-    }
-
-    public void setIdNote(long idNote) {
-        this.idNote = idNote;
     }
 
     public User getAuthor() {
@@ -82,5 +71,15 @@ public class Note {
 
     public void setNotifications(Set<Notification> notifications) {
         this.notifications = notifications;
+    }
+
+    @Override
+    public long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(long id) {
+        super.setId(id);
     }
 }

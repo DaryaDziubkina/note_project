@@ -1,4 +1,4 @@
-package objects;
+package by.gsu.dashadubkina.objects;
 
 
 import javax.persistence.GeneratedValue;

@@ -1,19 +1,12 @@
-package objects;
+package by.gsu.dashadubkina.objects;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
-
-@Entity
+@javax.persistence.Entity
 @Table(name = "notifications")
-
-public class Notification  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_notification")
-    private long idNotification;
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public class Notification extends Entity {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_notification", unique = true, nullable = false, length = 10)
@@ -27,12 +20,15 @@ public class Notification  {
         super();
     }
 
-    public long getIdNotification() {
-        return idNotification;
+
+    @Override
+    public long getId() {
+        return super.getId();
     }
 
-    public void setIdNotification(long idNotification) {
-        this.idNotification = idNotification;
+    @Override
+    public void setId(long id) {
+        super.setId(id);
     }
 
     public Date getDateTime() {

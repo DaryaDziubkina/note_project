@@ -3,35 +3,55 @@ package by.gsu.dashadubkina.daoImpl;
 import by.gsu.dashadubkina.dao.UserDao;
 import by.gsu.dashadubkina.objects.User;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
+import java.util.List;
+
+@Repository("UserDao")
+@Transactional
 public class UserDaoImpl implements UserDao {
-
 
     private Session session;
 
-    public UserDaoImpl(Session session){
-         this.session = session;
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public UserDaoImpl() {
+        super();
+    }
+
+    public UserDaoImpl(Session session) {
+        this.session = session;
+    }
+
+    private Session getSession() {
+       return sessionFactory.getCurrentSession();
     }
 
     public long createUser(User user) {
-        user.setName("Max");
-        user.setEmail("maxim@gamil.com");
-        user.setPassword("564128l");
-        session.save(user);
+        getSession().save(user);
         return user.getId();
     }
 
-    public void changeUser(User user) {
-
+    public User getUser(long id) {
+        return (User) getSession().get(User.class, id);
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(long id) {
+        User user = (User) getSession().get(User.class, id);
+        getSession().delete(user);
+
     }
 
     public void updateUser(User user) {
-
-
+        getSession().saveOrUpdate(user);
     }
+
+    public List<User> getAll() {
+        return getSession().createQuery("FROM User ").list();
+    }
+
 }

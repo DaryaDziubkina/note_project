@@ -7,11 +7,10 @@ import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "notes")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Note extends Entity {
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_author", nullable = false)
     private User author;
 

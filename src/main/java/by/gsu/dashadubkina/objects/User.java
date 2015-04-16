@@ -2,14 +2,11 @@ package by.gsu.dashadubkina.objects;
 
 
 import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import java.io.Serializable;
 
 @javax.persistence.Entity
 @Table(name = "users")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class User extends Entity implements Serializable {
 
     public User() {

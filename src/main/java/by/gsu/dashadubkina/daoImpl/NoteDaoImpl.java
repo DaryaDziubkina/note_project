@@ -4,36 +4,51 @@ package by.gsu.dashadubkina.daoImpl;
 import by.gsu.dashadubkina.dao.NoteDao;
 import by.gsu.dashadubkina.objects.Note;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.util.List;
 
-@Repository
+@Repository("NoteDao")
 public class NoteDaoImpl implements NoteDao{
 
     private Session session;
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public NoteDaoImpl(){
+        super();
+    }
 
     public NoteDaoImpl(Session session) {
         this.session = session;
     }
 
+    private Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     public long createNote(Note note) {
-        note.setDateTime(new Date());
-        note.setTopic("me");
-        session.save(note);
+        getSession().save(note);
         return note.getId();
-
     }
 
-    public void changeNote(Note note) {
-
+    public Note getNote(long id) {
+        return (Note) getSession().get(Note.class, id);
     }
 
-    public void deleteNote(Note note) {
-
+    public void deleteNote(long id) {
+        Note note = (Note) getSession().get(Note.class, id);
+        getSession().delete(note);
     }
 
     public void updateNote(Note note) {
+        getSession().saveOrUpdate(note);
+    }
 
+    public List<Note> getAll() {
+        return getSession().createQuery("FROM Note").list();
     }
 }

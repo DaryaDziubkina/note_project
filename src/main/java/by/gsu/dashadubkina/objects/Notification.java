@@ -5,7 +5,7 @@ import java.util.Date;
 
 @javax.persistence.Entity
 @Table(name = "notifications")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Notification extends Entity {
 
     @Temporal(TemporalType.TIMESTAMP)

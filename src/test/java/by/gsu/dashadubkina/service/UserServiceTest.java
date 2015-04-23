@@ -14,7 +14,7 @@ public class UserServiceTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         userService = (UserService) context.getBean("userService");
     }
 

@@ -17,7 +17,7 @@ public class NotificationDaoImpl implements NotificationDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public NotificationDaoImpl(){
+    public NotificationDaoImpl() {
         super();
     }
 

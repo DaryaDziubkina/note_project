@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class NoteServiceTest {
 
     public static final String BAD_SHOP = "bad shop";
-    public static final String BUY_A_PLATE= "buy a plate";
+    public static final String BUY_A_PLATE = "buy a plate";
 
     private NoteService noteService;
     private UserService userService;
@@ -81,7 +81,6 @@ public class NoteServiceTest {
         System.out.println(note.getId());
         Note updatedNote = noteService.getNote(note.getId());
         assertEquals(BUY_A_PLATE, updatedNote.getTopic());
-
 
 
     }

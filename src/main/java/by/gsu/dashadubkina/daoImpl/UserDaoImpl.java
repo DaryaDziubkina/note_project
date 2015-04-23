@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     private Session getSession() {
-       return sessionFactory.getCurrentSession();
+        return sessionFactory.getCurrentSession();
     }
 
     public long createUser(User user) {

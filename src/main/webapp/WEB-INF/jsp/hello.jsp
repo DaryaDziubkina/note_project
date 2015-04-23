@@ -4,7 +4,9 @@
     <title>Simple jsp page</title>
 </head>
 <body>
-    Hello user!
+Hello
+
+
 </body>
 </html>
 

@@ -11,14 +11,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("NoteDao")
-public class NoteDaoImpl implements NoteDao{
+public class NoteDaoImpl implements NoteDao {
 
     private Session session;
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public NoteDaoImpl(){
+    public NoteDaoImpl() {
         super();
     }
 

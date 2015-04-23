@@ -28,12 +28,14 @@ public class UserController {
 
     @RequestMapping(value = "/users/add", method = RequestMethod.GET)
     public String getAdd(Model model) {
-        model.addAttribute("personAttribute", new User());
+        model.addAttribute("userAttribute", new User());
         return "addpage";
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute("userAttribute") User user) {
+    public String add(@ModelAttribute("userAttribute") User user){
+
+        user.setId(user.getId());
         userService.createUser(user);
         return "addedpage";
     }
@@ -52,11 +54,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/edit", method = RequestMethod.POST)
-    public String saveEdit(@ModelAttribute("usersAttribute") User user,
+    public String saveEdit(@ModelAttribute("userAttribute") User user,
                            @RequestParam(value = "id", required = true) long id, Model model) {
         user.setId(id);
+//        User storedUser = userService.getUser(id);
+//        storedUser.setName(user.getName());
+//        userService.updateUser(storedUser);
+        //TODO
         userService.updateUser(user);
-        model.addAttribute("id", id);
-        return "editedpage";
+        model.addAttribute("users", userService.getAll());
+        return "userspage";
     }
 }

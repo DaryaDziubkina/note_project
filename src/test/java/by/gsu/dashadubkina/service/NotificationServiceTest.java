@@ -20,7 +20,7 @@ public class NotificationServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         userService = (UserService) context.getBean("userService");
         noteService = (NoteService) context.getBean("noteService");
         notificationService = (NotificationService) context.getBean("notificationService");
@@ -41,7 +41,7 @@ public class NotificationServiceTest {
         note.setAuthor(user);
         noteService.createNote(note);
         System.out.println("add");
-        Notification notification  = new Notification();
+        Notification notification = new Notification();
         notification.setNote(note);
         notification.setDateTime(new Date());
         notificationService.createNotification(notification);
@@ -63,7 +63,7 @@ public class NotificationServiceTest {
         note.setAuthor(user);
         noteService.createNote(note);
         System.out.println("add");
-        Notification notification  = new Notification();
+        Notification notification = new Notification();
         notification.setNote(note);
         notification.setDateTime(new Date());
         notificationService.createNotification(notification);
@@ -86,7 +86,7 @@ public class NotificationServiceTest {
         note.setAuthor(user);
         noteService.createNote(note);
         System.out.println("add");
-        Notification notification  = new Notification();
+        Notification notification = new Notification();
         notification.setNote(note);
         notification.setDateTime(new Date());
         notificationService.createNotification(notification);
@@ -113,7 +113,7 @@ public class NotificationServiceTest {
         note.setAuthor(user);
         noteService.createNote(note);
         System.out.println("add");
-        Notification notification  = new Notification();
+        Notification notification = new Notification();
         notification.setNote(note);
         notification.setDateTime(new Date());
         notificationService.createNotification(notification);

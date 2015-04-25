@@ -12,7 +12,7 @@ public class Notification extends Entity {
     @Column(name = "date_notification", unique = true, nullable = false, length = 10)
     public Date DateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_notes", nullable = false)
     private Note note;
 

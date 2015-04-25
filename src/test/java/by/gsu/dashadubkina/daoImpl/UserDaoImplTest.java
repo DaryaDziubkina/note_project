@@ -13,7 +13,7 @@ public class UserDaoImplTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("resources/applicationContext.xml");
         userDaoImpl = (UserDao) context.getBean("UserDao");
     }
 

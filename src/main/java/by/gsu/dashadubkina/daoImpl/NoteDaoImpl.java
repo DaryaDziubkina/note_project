@@ -6,6 +6,7 @@ import by.gsu.dashadubkina.objects.Note;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,18 +14,9 @@ import java.util.List;
 @Repository("NoteDao")
 public class NoteDaoImpl implements NoteDao {
 
-    private Session session;
-
+    @Qualifier("sessionFactory")
     @Autowired
     private SessionFactory sessionFactory;
-
-    public NoteDaoImpl() {
-        super();
-    }
-
-    public NoteDaoImpl(Session session) {
-        this.session = session;
-    }
 
     private Session getSession() {
         return sessionFactory.getCurrentSession();

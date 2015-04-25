@@ -11,13 +11,9 @@
 <body>
 
 <h1>Create New Users</h1>
-<c:url var="saveUrl" value="/main/users"/>
+<c:url var="saveUrl" value="/main/users/add"/>
 <form:form modelAttribute="userAttribute" method="POST" action="${saveUrl}">
     <table>
-        <tr>
-            <td>Id</td>
-            <td><form:input path="id"/></td>
-        </tr>
         <tr>
             <td>Name</td>
             <td><form:input path="name"/></td>

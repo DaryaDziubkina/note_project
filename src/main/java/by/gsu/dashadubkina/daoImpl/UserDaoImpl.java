@@ -5,6 +5,7 @@ import by.gsu.dashadubkina.objects.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,18 +15,9 @@ import java.util.List;
 @Transactional
 public class UserDaoImpl implements UserDao {
 
-    private Session session;
-
     @Autowired
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
-
-    public UserDaoImpl() {
-        super();
-    }
-
-    public UserDaoImpl(Session session) {
-        this.session = session;
-    }
 
     private Session getSession() {
         return sessionFactory.getCurrentSession();

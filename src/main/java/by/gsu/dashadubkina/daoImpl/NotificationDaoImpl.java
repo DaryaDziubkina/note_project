@@ -6,6 +6,7 @@ import by.gsu.dashadubkina.objects.Notification;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,17 +14,9 @@ import java.util.List;
 @Repository("NotificationDao")
 public class NotificationDaoImpl implements NotificationDao {
 
-    private Session session;
     @Autowired
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
-
-    public NotificationDaoImpl() {
-        super();
-    }
-
-    public NotificationDaoImpl(Session session) {
-        this.session = session;
-    }
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();

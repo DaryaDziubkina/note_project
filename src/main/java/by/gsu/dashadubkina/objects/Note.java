@@ -9,8 +9,7 @@ import java.util.Set;
 @Table(name = "notes")
 public class Note extends Entity {
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_author", nullable = false)
     private User author;
 

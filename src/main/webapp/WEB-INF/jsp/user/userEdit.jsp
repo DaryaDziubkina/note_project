@@ -26,17 +26,6 @@
             <td>Password</td>
             <td><form:input path="password"/></td>
         </tr>
-
-            <%--<tr>--%>
-            <%--<td><form:label path="name">First Name:</form:label></td>--%>
-            <%--<td><form:input path=" " disabled="false"/></td>--%>
-            <%--</tr>--%>
-
-            <%--<tr>--%>
-            <%--<td><form:label path="nam">Last Name</form:label></td>--%>
-            <%--&lt;%&ndash;<td><form:input path="lastName1"/></td>&ndash;%&gt;--%>
-            <%--</tr>--%>
-
     </table>
 
     <input type="submit" value="Save"/>

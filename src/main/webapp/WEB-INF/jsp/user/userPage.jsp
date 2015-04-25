@@ -11,12 +11,11 @@
 <h1>Users</h1>
 
 <c:url var="addUrl" value="/main/users/add"></c:url>
-<table style="border: 1px solid; width: 500px; text-align:center">
-    <thead style="background:#fcf">
+<table style="border: 2px solid; width: 450px; text-align:center">
+    <thead style="background:#abc">
     <tr>
         <th>First Name</th>
-        <th>Last Name</th>
-        <th colspan="2"></th>
+        <th colspan="4"></th>
     </tr>
     </thead>
     <tbody>
@@ -25,7 +24,6 @@
         <c:url var="deleteUrl" value="/main/users/delete?id=${users.id}"/>
         <c:url var="addUrl" value="/main/users/add?id=${users.id}"/>
         <tr>
-            <td><c:out value="${users.name}"/></td>
             <td><c:out value="${users.name}"/></td>
             <td><a href="${editUrl}">Edit</a></td>
             <td><a href="${deleteUrl}">Delete</a></td>

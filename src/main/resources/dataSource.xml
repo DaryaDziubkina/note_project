@@ -28,9 +28,8 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.current_session_context_class ">thread</prop>
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
                 <prop key="hibernate.show_sql">true</prop>
-
                 <prop key="hibernate.c3p0.acquire_increment">5</prop>
                 <prop key="hibernate.c3p0.idle_test_period">1800</prop>
                 <prop key="hibernate.c3p0.max_size">600</prop>

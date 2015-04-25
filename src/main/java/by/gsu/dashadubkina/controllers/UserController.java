@@ -23,34 +23,34 @@ public class UserController {
     public String getUsers(Model model) {
         List<User> users = userService.getAll();
         model.addAttribute("users", users);
-        return "userspage";
+        return "user/userPage";
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.GET)
     public String getAdd(Model model) {
         model.addAttribute("userAttribute", new User());
-        return "addpage";
+        return "user/userAdd";
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute("userAttribute") User user){
-
-        user.setId(user.getId());
+    public String add(@ModelAttribute("userAttribute") User user, Model model) {
         userService.createUser(user);
-        return "addedpage";
+        model.addAttribute("users", userService.getAll());
+        return "user/userPage";
     }
 
     @RequestMapping(value = "/users/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "id", required = true) long id, Model model) {
         userService.deleteUser(id);
         model.addAttribute("id", id);
-        return "deletedpage";
+        model.addAttribute("users", userService.getAll());
+        return "user/userPage";
     }
 
     @RequestMapping(value = "/users/edit", method = RequestMethod.GET)
     public String getEdit(@RequestParam(value = "id", required = true) long id, Model model) {
         model.addAttribute("userAttribute", userService.getUser(id));
-        return "editpage";
+        return "user/userEdit";
     }
 
     @RequestMapping(value = "/users/edit", method = RequestMethod.POST)
@@ -63,6 +63,6 @@ public class UserController {
         //TODO
         userService.updateUser(user);
         model.addAttribute("users", userService.getAll());
-        return "userspage";
+        return "user/userPage";
     }
 }

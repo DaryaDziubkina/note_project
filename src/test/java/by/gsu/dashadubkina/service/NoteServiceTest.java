@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,14 +19,12 @@ public class NoteServiceTest {
 
     private NoteService noteService;
     private UserService userService;
-    private ApplicationContext context;
 
     @Before
     public void setUp() throws Exception {
-        context = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         userService = (UserService) context.getBean("userService");
         noteService = (NoteService) context.getBean("noteService");
-
     }
 
     @Test
@@ -87,7 +86,11 @@ public class NoteServiceTest {
 
     @Test
     public void testGetAll() throws Exception {
-        assertEquals("Size should be equal zero", 24, noteService.getAll().size());
+        List<Note> all = noteService.getAll();
+        for (Note note : all) {
+            System.out.println(note.getAuthor().getId());
+        }
+        assertEquals("Size should be equal zero", 24, all.size());
     }
 
 

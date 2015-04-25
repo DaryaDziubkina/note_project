@@ -1,6 +1,7 @@
 package by.gsu.dashadubkina.controllers;
 
 import by.gsu.dashadubkina.objects.User;
+import by.gsu.dashadubkina.service.NoteService;
 import by.gsu.dashadubkina.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/main")
 public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private NoteService noteService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String getUsers(Model model) {
-        List<User> users = userService.getAll();
-        model.addAttribute("users", users);
-        return "user/userPage";
-    }
+//    @RequestMapping(value = "/users", method = RequestMethod.GET)
+//    public String getUsers(Model model) {
+//        List<User> users = userService.getAll();
+//        model.addAttribute("users", users);
+//        return "user/userPage";
+//    }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.GET)
     public String getAdd(Model model) {
@@ -35,8 +36,8 @@ public class UserController {
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
     public String add(@ModelAttribute("userAttribute") User user, Model model) {
         userService.createUser(user);
-        model.addAttribute("users", userService.getAll());
-        return "user/userPage";
+        model.addAttribute("notes", noteService.getAll());
+        return "note/notePage";
     }
 
     @RequestMapping(value = "/users/delete", method = RequestMethod.GET)

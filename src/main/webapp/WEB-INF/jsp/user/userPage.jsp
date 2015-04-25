@@ -23,12 +23,12 @@
         <c:url var="editUrl" value="/main/users/edit?id=${users.id}"/>
         <c:url var="deleteUrl" value="/main/users/delete?id=${users.id}"/>
         <c:url var="addUrl" value="/main/users/add?id=${users.id}"/>
-        <tr>
-            <td><c:out value="${users.name}"/></td>
-            <td><a href="${editUrl}">Edit</a></td>
-            <td><a href="${deleteUrl}">Delete</a></td>
-            <td><a href="${addUrl}">Add</a></td>
-        </tr>
+        <%--<tr>--%>
+            <%--<td><c:out value="${users.name}"/></td>--%>
+            <%--<td><a href="${editUrl}">Edit</a></td>--%>
+            <%--<td><a href="${deleteUrl}">Delete</a></td>--%>
+            <%--<td><a href="${addUrl}">Add</a></td>--%>
+        <%--</tr>--%>
     </c:forEach>
     </tbody>
 </table>
